@@ -1,0 +1,73 @@
+name: Terraform CI/CD
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+
+  validate:
+    name: Validate Terraform
+    runs-on: ubuntu-latest
+    if: github.event_name != 'push' || github.ref != 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.0
+
+      - run: terraform init
+        working-directory: env/dev
+
+      - run: terraform validate
+        working-directory: env/dev
+
+  plan_and_cost:
+    name: Terraform Plan + Cost Estimation
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.0
+
+      - run: terraform init
+        working-directory: env/dev
+
+      - run: terraform plan -out=tfplan
+        working-directory: env/dev
+
+      - uses: infracost/actions/setup@v2
+
+      - run: infracost breakdown --path env/dev --format table
+
+
+  apply:
+    name: Terraform Apply
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.0
+
+      - run: terraform init
+        working-directory: env/dev
+
+      - run: terraform apply -auto-approve
+        working-directory: env/dev
