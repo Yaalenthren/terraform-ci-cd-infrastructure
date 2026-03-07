@@ -4,10 +4,17 @@
 *.tfstate.*
 crash.log
 *.tfvars
+
+# Override files
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Terraform lock file
-.terraform.lock.hcl
+# CLI config
+.terraformrc
+terraform.rc
+
+# OS files
+.DS_Store
+Thumbs.db
