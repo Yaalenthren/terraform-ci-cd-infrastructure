@@ -23,6 +23,14 @@ module "ec2" {
   subnet_id = module.vpc.subnet_id
 }
 
+module "budget" {
+  source = "../../modules/budget"
+}
+
+module "cost_reports" {
+  source = "../../modules/cost_reports"
+}
+
 output "instance_public_ip" {
   value = module.ec2.public_ip
 }
