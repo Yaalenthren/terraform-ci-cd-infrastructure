@@ -113,7 +113,8 @@ Resource-level costs
 
 Billing breakdown
 
-Repository Structure
+### Repository Structure
+```
 terraform-ci-cd-infrastructure
 │
 ├── .github
@@ -139,24 +140,21 @@ terraform-ci-cd-infrastructure
 │       └── main.tf
 │
 └── README.md
-CI/CD Workflow
+```
+### CI/CD Workflow
 
-The pipeline performs the following stages:
+## The pipeline performs the following stages:
 
 Validate
-
 Runs Terraform initialization and validation.
 
 Plan
-
 Generates the Terraform execution plan.
 
 Apply
-
 Deploys the infrastructure automatically when changes are pushed to the main branch.
 
-Destroy (optional)
-
+Destroy 
 Infrastructure can be destroyed manually when required.
 
 Example Infrastructure Created
