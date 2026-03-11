@@ -26,6 +26,7 @@ Applies the infrastructure changes to AWS
 The pipeline also supports safe infrastructure destruction when needed.
 
 Architecture
+```
 Developer Push
        │
        ▼
@@ -38,7 +39,9 @@ GitHub Actions CI/CD Pipeline
 Terraform Infrastructure Provisioning
        │
        ▼
+```
 AWS Infrastructure
+```
 ├── VPC
 ├── Public Subnet
 ├── Security Group
@@ -47,7 +50,8 @@ AWS Infrastructure
 ├── DynamoDB (State Locking)
 ├── AWS Budget Alerts
 └── AWS Cost & Usage Reports
-Technologies Used
+```
+### Technologies Used
 Category	Tools
 Infrastructure as Code	Terraform
 CI/CD Pipeline	GitHub Actions
