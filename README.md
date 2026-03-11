@@ -1,31 +1,19 @@
-Here is a clean, professional README you can use for your GitHub repo.
-It is written in a way that DevOps recruiters can quickly understand your project.
-
-You can copy-paste this into README.md.
-
-Terraform CI/CD Infrastructure Automation on AWS
+## Terraform CI/CD Infrastructure Automation on AWS
 
 This project demonstrates a complete Infrastructure as Code (IaC) workflow using Terraform and a CI/CD pipeline built with GitHub Actions to automatically provision infrastructure in Amazon Web Services.
-
 The pipeline provisions core AWS infrastructure components while also implementing state management, cost monitoring, and automated infrastructure deployment.
 
-Project Overview
+## Project Overview
 
 This project automates the provisioning of cloud infrastructure using Terraform and a GitHub-based CI/CD pipeline.
-
 Whenever changes are pushed to the repository, GitHub Actions automatically:
-
 Initializes Terraform
-
 Validates the configuration
-
 Generates an execution plan
-
 Applies the infrastructure changes to AWS
-
 The pipeline also supports safe infrastructure destruction when needed.
 
-Architecture
+## Architecture
 ```
 Developer Push
        │
@@ -39,9 +27,7 @@ GitHub Actions CI/CD Pipeline
 Terraform Infrastructure Provisioning
        │
        ▼
-```
 AWS Infrastructure
-```
 ├── VPC
 ├── Public Subnet
 ├── Security Group
